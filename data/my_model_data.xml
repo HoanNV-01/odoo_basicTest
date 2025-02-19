@@ -1,0 +1,7 @@
+<odoo>
+    <record id="my_model_record1" model="my.model">
+        <field name="name">Example Record</field>
+        <field name="description">This is an example record</field>
+        <field name="active">True</field>
+    </record>
+</odoo>

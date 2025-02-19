@@ -1,0 +1,123 @@
+<odoo>
+    <!-- TREE VIEW -->
+    <record id="view_player_tree" model="ir.ui.view">
+        <field name="name">player.tree</field>
+        <field name="model">player</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="country"/>
+                <field name="gender"/>
+                <field name="position"/>
+                <field name="height"/>
+                <field name="weight"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Tree view list chat -->
+    <record id="view_chat_tree" model="ir.ui.view">
+        <field name="name">student.manager.chat.tree</field>
+        <field name="model">student.manager.chat</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="email"/>
+                <field name="subject"/>
+                <field name="text"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form chat -->
+    <record id="view_chat_form" model="ir.ui.view">
+        <field name="name">student.manager.chat.form</field>
+        <field name="model">student.manager.chat</field>
+        <field name="arch" type="xml">
+            <form string="Chat Form">  
+                <sheet>
+                    <group>
+                        <field name="email"/>
+                        <field name="subject"/>
+                        <field name="text"/>
+                    </group>
+                    <footer>
+                        <button name="send_email" type="object" string="Send Email" class="btn-primary"/>
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- FORM VIEW -->
+    <record id="view_player_form" model="ir.ui.view">
+        <field name="name">player.form</field>
+        <field name="model">player</field>
+        <field name="arch" type="xml">
+            <form string="Player">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="country"/>
+                            <field name="gender"/>
+                            <field name="position"/>
+                        </group>
+                        <group>
+                            <field name="day_of_birth"/>
+                            <field name="height"/>
+                            <field name="weight"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="image" widget="image"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- ACTION: Hiển thị danh sách + form -->
+    <record id="player_action" model="ir.actions.act_window">
+        <field name="name">All Players</field>
+        <field name="res_model">player</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- ACTION: Chỉ hiển thị danh sách -->
+    <record id="player_action_tree" model="ir.actions.act_window">
+        <field name="name">Players List</field>
+        <field name="res_model">player</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- ACTION: Chỉ hiển thị form -->
+    <record id="player_action_form" model="ir.actions.act_window">
+        <field name="name">Create Player</field>
+        <field name="res_model">player</field>
+        <field name="view_mode">form</field>
+    </record>
+
+    <!-- ACTION: Chỉ hiển thị form -->
+    <record id="student_manager_chat_action_view" model="ir.actions.act_window">
+        <field name="name">Student manager chat</field>
+        <field name="res_model">student.manager.chat</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Action: hiển thị list chat -->
+
+    <!-- MENU ROOT -->
+    <menuitem id="menu_player_root" name="Player Management"/>
+
+    <!-- MENU HIỂN THỊ DANH SÁCH -->
+    <menuitem id="menu_player_list" name="Players List" parent="menu_player_root" action="player_action_tree"/>
+    
+    <!-- MENU TẠO CẦU THỦ MỚI -->
+    <menuitem id="menu_create_player" name="Create Player" parent="menu_player_root" action="player_action_form"/>
+    
+    <!-- MENU HIỂN THỊ CẢ LIST + FORM -->
+    <menuitem id="menu_all_players" name="All Players" parent="menu_player_root" action="player_action"/>
+    <!-- Menu Hiển thị List Chat -->
+    <menuitem id="menu_all_players" name="List chat" parent="menu_player_root" action="student_manager_chat_action_view"/>
+</odoo>
