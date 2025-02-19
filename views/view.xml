@@ -1,0 +1,113 @@
+<odoo>
+   <!-- Menu Root -->
+   <menuitem id="menu_root_Employee" name="Employees"/> 
+   <menuitem id="menu_root_Links" name="Links"/> 
+
+   <!-- Tree View Employee -->
+   <record id="view_tree_employee" model="ir.ui.view">
+      <field name="name">employee.tree</field>
+      <field name="model">employee</field>
+      <field name="arch" type="xml">
+         <tree string="Employees">
+            <field name="full_name"/>
+            <field name="email"/>
+            <field name="role"/>
+         </tree>
+      </field>
+   </record>
+
+   <!-- Form View Employee -->
+   <record id="view_form_employee" model="ir.ui.view">
+      <field name="name">employee.form</field>
+      <field name="model">employee</field>
+      <field name="arch" type="xml">
+         <form string="Employee">
+            <sheet>
+               <group>
+                  <group>
+                     <field name="full_name"/>
+                     <field name="email"/>
+                     <field name="password" password="True"/>
+                  </group>
+                  <group>
+                     <field name="role" widget='radio'/>
+                  </group>
+               </group>
+            </sheet>
+         </form>
+      </field>
+   </record>
+
+   <!-- Action Employee -->
+   <record id="action_employee" model="ir.actions.act_window">
+      <field name="name">Employees</field>
+      <field name="res_model">employee</field>
+      <field name="view_mode">tree,form</field>
+      <field name="view_id" ref="view_tree_employee"/>
+   </record>
+
+   <!-- Action Form Employee -->
+   <record id="action_form_employee" model="ir.actions.act_window">
+      <field name="name">Create Employee</field>
+      <field name="res_model">employee</field>
+      <field name="view_mode">form</field>
+      <field name="view_id" ref="view_form_employee"/>
+   </record>
+
+   <!-- Tree View Links -->
+   <record id="view_tree_link" model="ir.ui.view">
+      <field name="name">links.tree</field>
+      <field name="model">links</field>
+      <field name="arch" type="xml">
+         <tree string="Links" colors="background-color:rgb(249, 8, 8);">
+            <field name="name" class="view_center"/>
+            <field name="url" class="view_center"/>
+            <field name="description" class="view_center"/>
+         </tree>
+      </field>
+   </record>
+
+   <!-- Form View Links -->
+   <record id="view_form_link" model="ir.ui.view">
+      <field name="name">links.form</field>
+      <field name="model">links</field>
+      <field name="arch" type="xml">
+         <form string="Links">
+            <sheet>
+                <group>
+                    <field name="name"/>
+                    <field name="url"/>
+                    <field name="description"/>
+                </group>
+                <footer>
+                    <button type="button" class="btn btn-primary" string="Call JS" t-on-click="callJsFunction"/>
+                </footer>
+            </sheet>
+         </form>
+      </field>
+   </record>
+
+   <!-- Action Links -->
+   <record id="action_link" model="ir.actions.act_window">
+      <field name="name">Links</field>
+      <field name="res_model">links</field>
+      <field name="view_mode">tree,form</field>
+      <field name="view_id" ref="view_tree_link"/>
+   </record>
+
+   <!-- Action Form Links -->
+   <record id="action_form_link" model="ir.actions.act_window">
+      <field name="name">Create Links</field>
+      <field name="res_model">links</field>
+      <field name="view_mode">form</field>
+      <field name="view_id" ref="view_form_link"/>
+   </record>
+
+   <!-- Menu item Employee -->
+   <menuitem id="menu_employee" name="Employees" parent="menu_root_Employee" action="action_employee"/>
+   <menuitem id="menu_form_employee" name="Create Employee" parent="menu_root_Employee" action="action_form_employee"/>
+
+   <!-- Menu item Links -->
+   <menuitem id="menu_link" name="List Links" parent="menu_root_Links" action="action_link"/>
+   <menuitem id="menu_form_link" name="Create Links" parent="menu_root_Links" action="action_form_link"/>
+</odoo>

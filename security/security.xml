@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+   <!-- Nhóm quyền quản trị viên hệ thống -->
+   <record id="group_links_admin" model="res.groups">
+      <field name="name">Links Admin</field>
+      <field name="category_id" ref="base.module_category_hidden"/>
+   </record>
+
+   <!-- Nhóm quyền quản lý (Manager) -->
+   <record id="group_links_manager" model="res.groups">
+      <field name="name">Links Manager</field>
+      <field name="category_id" ref="base.module_category_hidden"/>
+   </record>
+
+   <!-- Nhóm quyền người dùng Links -->
+   <record id="group_links_user" model="res.groups">
+      <field name="name">Links User</field>
+      <field name="category_id" ref="base.module_category_hidden"/>
+   </record>
+
+   <!-- Quy tắc record rule: Người dùng chỉ có thể thấy các link của mình -->
+   <record id="links_user_rule" model="ir.rule">
+      <field name="name">Links: User Can See Own Links</field>
+      <field name="model_id" ref="model_links"/>
+      <field name="groups" eval="[(4, ref('group_links_user'))]"/>
+      <!-- <field name="domain_force">[('create_uid', '=', user.id)]</field> -->
+      <field name="domain_force">[(1, '=', 1)]</field>
+      <field name="perm_read" eval="1"/>
+      <field name="perm_write" eval="0"/>
+      <field name="perm_create" eval="0"/>
+      <field name="perm_unlink" eval="0"/>
+   </record>
+</odoo>

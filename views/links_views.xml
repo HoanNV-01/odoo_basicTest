@@ -1,0 +1,93 @@
+<odoo>
+   <!-- Menu Root -->
+   <menuitem id="menu_root_Links" name="Links"/> 
+   <menuitem id="menu_root_Employee" name="Employee"/> 
+
+   <!-- Tree View Links -->
+   <record id="view_tree_link" model="ir.ui.view">
+      <field name="name">links.tree</field>
+      <field name="model">links</field>
+      <field name="arch" type="xml">
+         <tree string="Links">
+            <field name="name"/>
+            <field name="url" widget="url"/>
+            <field name="description" groups="links.group_links_manager"/>
+         </tree>
+      </field>
+   </record>
+
+   <!-- Kanban View Links -->
+   <record id="view_kanban_link" model="ir.ui.view">
+      <field name="name">links.kanban</field>
+      <field name="model">links</field>
+      <field name="arch" type="xml">
+         <kanban>
+            <field name="name"/>
+            <field name="url"/>
+            <field name="description"/>
+            <templates>
+                  <t t-name="kanban-box">
+                     <div class="oe_kanban_global_click">
+                        <div class="oe_kanban_details">
+                              <strong t-esc="record.name.value"/>
+                              <div t-if="record.url.value" class="oe_kanban_description">
+                                 <a t-att-href="record.url.value" target="_blank" rel="noopener noreferrer">
+                                    <t t-esc="record.url.value"/>
+                                 </a>
+                              </div>
+                        </div>
+                     </div>
+                  </t>
+            </templates>
+         </kanban>
+      </field>
+   </record>
+
+
+   <!-- Form View Links -->
+   <record id="view_form_link" model="ir.ui.view">
+      <field name="name">links.form</field>
+      <field name="model">links</field>
+      <field name="arch" type="xml">
+         <form string="Links">
+            <sheet>
+               <group>
+                  <field name="name"/>
+                  <field name="url" widget="url"/>
+                  <field name="description"/>
+               </group>
+            </sheet>
+         </form>
+      </field>
+   </record>
+
+   <!-- Action Links -->
+   <record id="action_link" model="ir.actions.act_window">
+      <field name="name">Links</field>
+      <field name="res_model">links</field>
+      <field name="view_mode">tree</field>
+      <field name="view_mode">tree,form</field>
+      <field name="view_id" ref="view_tree_link"/>
+   </record>
+
+   <!-- Action Form Links -->
+   <record id="action_form_link" model="ir.actions.act_window">
+      <field name="name">Create Links</field>
+      <field name="res_model">links</field>
+      <field name="view_mode">form</field>
+      <field name="view_id" ref="view_form_link"/>
+   </record>
+
+   <!-- Action kanban Links -->
+   <record id="action_kanban_link" model="ir.actions.act_window">
+      <field name="name">View Kanban Links</field>
+      <field name="res_model">links</field>
+      <field name="view_mode">kanban,form</field>
+      <field name="view_id" ref="view_kanban_link"/>
+   </record>
+
+   <!-- Menu item Links -->
+   <menuitem id="menu_link" name="List Links" parent="menu_root_Links" action="action_link"/>
+   <menuitem id="menu_form_link" name="Create Links" parent="menu_root_Links" action="action_form_link"  groups="links.group_links_manager"/>
+   <menuitem id="menu_kanban_link" name="List Kanban Links" parent="menu_root_Links" action="action_kanban_link"/>
+</odoo>

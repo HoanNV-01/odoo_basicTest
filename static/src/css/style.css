@@ -1,0 +1,5 @@
+.view_center {
+   text-align: center;  /* Căn giữa nội dung trong các ô */
+   font-weight: bold;   /* Tạo đậm cho nội dung */
+   color: #3498db;      /* Màu chữ (thay đổi theo yêu cầu) */
+}
