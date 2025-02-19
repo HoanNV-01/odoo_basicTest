@@ -1,0 +1,55 @@
+<odoo>
+   <!-- Menu Root -->
+   <menuitem id="menu_root_Links" name="Links"/> 
+
+   <!-- Tree View Links -->
+   <record id="view_tree_link" model="ir.ui.view">
+      <field name="name">links.tree</field>
+      <field name="model">links</field>
+      <field name="arch" type="xml">
+         <tree string="Links">
+            <field name="name"/>
+            <field name="url"/>
+            <field name="description" groups="links.group_links_manager"/>
+         </tree>
+      </field>
+   </record>
+
+   <!-- Form View Links -->
+   <record id="view_form_link" model="ir.ui.view">
+      <field name="name">links.form</field>
+      <field name="model">links</field>
+      <field name="arch" type="xml">
+         <form string="Links">
+            <sheet>
+               <group>
+                  <field name="name"/>
+                  <field name="url"/>
+                  <field name="description"/>
+               </group>
+            </sheet>
+         </form>
+      </field>
+   </record>
+
+   <!-- Action Links -->
+   <record id="action_link" model="ir.actions.act_window">
+      <field name="name">Links</field>
+      <field name="res_model">links</field>
+      <field name="view_mode">tree</field>
+      <field name="view_mode">tree,form</field>
+      <field name="view_id" ref="view_tree_link"/>
+   </record>
+
+   <!-- Action Form Links -->
+   <record id="action_form_link" model="ir.actions.act_window">
+      <field name="name">Create Links</field>
+      <field name="res_model">links</field>
+      <field name="view_mode">form</field>
+      <field name="view_id" ref="view_form_link"/>
+   </record>
+
+   <!-- Menu item Links -->
+   <menuitem id="menu_link" name="List Links" parent="menu_root_Links" action="action_link"/>
+   <menuitem id="menu_form_link" name="Create Links" parent="menu_root_Links" action="action_form_link"  groups="links.group_links_manager"/>
+</odoo>
