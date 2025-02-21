@@ -1,0 +1,11 @@
+id,name_partner,biz_rep,address,email,phone_number,description_partner,status_partner
+1,ABC Corp,John Doe,123 Main St,abc@example.com,123456789,Leading provider of IT solutions,active
+2,XYZ Ltd,Jane Smith,456 Elm St,xyz@example.com,987654321,Manufacturer of electronic components,active
+3,Global Tech,Michael Brown,789 Oak St,globaltech@example.com,112233445,Software development and consulting,active
+4,Sunrise LLC,Emily Johnson,101 Maple St,sunrise@example.com,223344556,Renewable energy solutions,active
+5,GreenFields Inc,David White,202 Pine St,greenfields@example.com,334455667,Agricultural and organic products,active
+6,Ocean Traders,Linda Green,303 Cedar St,oceantraders@example.com,445566778,International trade and logistics,active
+7,Peak Finance,Robert Black,404 Birch St,peakfinance@example.com,556677889,Financial services and investment,active
+8,Starlight Media,Susan Blue,505 Walnut St,starlight@example.com,667788990,Advertising and media agency,active
+9,Mega Build,James Grey,606 Spruce St,megabuild@example.com,778899001,Construction and infrastructure,active
+10,Sunset Apparel,Patricia Yellow,707 Redwood St,sunset@example.com,889900112,Fashion and textile manufacturing,cancelled

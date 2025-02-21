@@ -1,0 +1,17 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+access_contract_user,access.contract.user,model_contract_document_contract,base.group_user,1,0,0,0
+access_contract_manager,access.contract.manager,model_contract_document_contract,base.group_system,1,1,1,1
+access_contract_admin,access.contract.admin,model_contract_document_contract,base.group_system,1,1,1,1
+
+access_type_contract_user,access.type_contract.user,model_contract_document_type_contract,base.group_system,1,0,0,0
+access_type_contract_manager,access.type_contract.manager,model_contract_document_type_contract,base.group_system,1,1,1,1
+access_type_contract_admin,access.type_contract.admin,model_contract_document_type_contract,base.group_system,1,1,1,1
+
+access_partner_user,access.type_contract.user,model_contract_document_partner,base.group_system,1,0,0,0
+access_partner_manager,access.type_contract.manager,model_contract_document_partner,base.group_system,1,0,0,0
+access_partner_admin,access.type_contract.admin,model_contract_document_partner,base.group_system,1,1,1,1
+
+access_file_user,access.file.user,model_contract_document_file,base.group_system,1,0,0,0
+access_file_manager,access.file.manager,model_contract_document_file,base.group_system,1,0,0,0
+access_file_admin,access.file.admin,model_contract_document_file,base.group_system,1,1,1,1

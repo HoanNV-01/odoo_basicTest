@@ -1,0 +1,127 @@
+<odoo>
+   <!-- Menu root -->
+   <menuitem id="menu_root_contract_document" name="Contract"/>
+
+   <!-- Action view Dashboard -->
+   <record id="contract_dashboard_action" model="ir.actions.act_window">
+      <field name="name">Dashboard</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">contract_document.partner</field>
+      <field name="view_mode">graph</field>
+      <field name="context">{}</field>
+   </record>
+
+   <record id="contract_graph_view" model="ir.ui.view">
+      <field name="name">partner.graph.view</field>
+      <field name="model">contract_document.partner</field>
+      <field name="arch" type="xml">
+         <graph string="Contracts by Status" type="bar">
+               <field name="status_partner" type="row"/>
+               <field name="id" type="measure"/>
+         </graph>
+      </field>
+   </record>
+
+   <!-- Loại hợp đồng -->
+   <record id="type_contract_tree_view" model="ir.ui.view">
+      <field name="name">type_contract.tree.view</field>
+      <field name="model">contract_document.type_contract</field>
+      <field name="arch" type="xml">
+         <tree string="Type Contract">
+               <field name="name_type_contract"/>
+               <field name="status_type_contract"/>
+         </tree>
+      </field>
+   </record>
+
+   <record id="contract_action" model="ir.actions.act_window">
+      <field name="name">Type Contracts</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">contract_document.type_contract</field>
+      <field name="view_mode">tree,form</field>
+   </record>
+
+   <!-- Đối tác -->
+   <record id="partner_tree_view" model="ir.ui.view">
+      <field name="name">partner.tree.view</field>
+      <field name="model">contract_document.partner</field>
+      <field name="arch" type="xml">
+         <tree string="Partner List">
+               <field name="name_partner"/>
+               <field name="biz_rep"/>
+               <field name="address"/>
+               <field name="email"/>
+               <field name="phone_number"/>
+               <field name="status_partner"/>
+               <button name="toggle_status" type="object" string="Changer status" class="oe_highlight"/>
+         </tree>
+      </field>
+   </record>
+
+   <record id="partner_form_view" model="ir.ui.view">
+      <field name="name">partner.form.view</field>
+      <field name="model">contract_document.partner</field>
+      <field name="arch" type="xml">
+         <form string="Partner">
+               <group>
+                  <group>
+                     <field name="name_partner"/>
+                     <field name="biz_rep"/>  
+                     <field name="phone_number"/>
+                  </group>
+                  <group>
+                     <field name="email"/>
+                     <field name="address"/>
+                  </group>
+                  <group>
+                     <field name="description_partner"/>
+                  </group>
+                  <group>
+                     <field name="status_partner"/>
+                  </group>
+               </group>
+         </form>
+      </field>
+   </record>
+
+   <record id="partner_action" model="ir.actions.act_window">
+      <field name="name">Partner</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">contract_document.partner</field>
+      <field name="view_mode">tree,form</field>
+   </record>
+
+   <!-- Hợp đồng -->
+   <record id="contract_tree_view" model="ir.ui.view">
+      <field name="name">contract.tree.view</field>
+      <field name="model">contract_document.contract</field>
+      <field name="arch" type="xml">
+         <tree string="Contracts">
+               <field name="name"/>
+               <field name="partner_id"/>
+               <field name="contract_type_id"/>
+               <field name="start_date"/>
+               <field name="end_date"/>
+               <field name="state"/>
+         </tree>
+      </field>
+   </record>
+
+   <!-- Action mở danh sách hợp đồng -->
+   <record id="action_contract" model="ir.actions.act_window">
+      <field name="name">Contracts</field>
+      <field name="res_model">contract_document.contract</field>
+      <field name="view_mode">tree,form</field>
+   </record>
+
+   
+   <!-- menu item -->
+   <!-- Dashboard -->
+   <menuitem id="contract_dashboard_menu" name="Dashboard" action="contract_dashboard_action" parent="menu_root_contract_document" groups="Contract_Document.group_contract_manager"/>
+   <!-- Menu hiển thị danh sách hợp đồng -->
+   <menuitem id="menu_contract" name="Contracts" action="action_contract" parent="menu_root_contract_document"/>
+   <!-- Type Contracts -->
+   <menuitem id="type_contract_menu" name="Manager type contracts" action="contract_action"  parent="menu_root_contract_document" groups="Contract_Document.group_contract_manager"/>
+   <!-- Type Contracts -->
+   <menuitem id="type_partner_menu" name="Partner" action="partner_action"  parent="menu_root_contract_document" />
+</odoo>

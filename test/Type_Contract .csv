@@ -1,0 +1,11 @@
+id,name_type_contract,description_type_contract,status_type_contract
+1,Full-time Contract,Contract for full-time employees,active
+2,Part-time Contract,Contract for part-time employees,active
+3,Freelance Contract,Contract for freelance workers,active
+4,Internship Contract,Contract for interns and trainees,active
+5,Temporary Contract,Short-term contract for temporary employees,active
+6,Consultant Contract,Contract for external consultants,active
+7,Project-based Contract,Contract for employees hired for specific projects,active
+8,Probation Contract,Contract for employees under probation period,active
+9,Vendor Agreement,Contract for vendors and suppliers,active
+10,Terminated Contract,Contract that has been cancelled,cancelled
